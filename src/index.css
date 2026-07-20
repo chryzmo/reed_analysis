@@ -144,9 +144,15 @@ h1 {
   text-overflow: ellipsis;
 }
 
-.comparison-table th:nth-child(-n + 4),
-.comparison-table td:nth-child(-n + 4) {
+.comparison-table th:nth-child(-n + 5),
+.comparison-table td:nth-child(-n + 5) {
   text-align: left;
+}
+
+.comparison-hint {
+  font-size: 0.8em;
+  opacity: 0.65;
+  margin: 0 0 8px;
 }
 
 .comparison-table th button {
@@ -206,4 +212,63 @@ h1 {
   color: inherit;
   cursor: pointer;
   padding: 0;
+}
+
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85em;
+  margin-top: 8px;
+}
+
+.compare-table th,
+.compare-table td {
+  border-bottom: 1px solid var(--border);
+  padding: 6px 8px;
+  text-align: right;
+}
+
+.compare-table th:first-child,
+.compare-table td:first-child {
+  text-align: left;
+}
+
+.compare-better {
+  color: #0ca30c;
+  font-weight: 600;
+}
+
+.metric-tooltip {
+  position: relative;
+  cursor: help;
+  border-bottom: 1px dotted currentColor;
+}
+
+.metric-tooltip::after {
+  content: attr(data-tip);
+  position: absolute;
+  left: 0;
+  top: 100%;
+  margin-top: 6px;
+  width: max-content;
+  max-width: 16rem;
+  background: var(--text-h);
+  color: var(--bg);
+  font-size: 0.85em;
+  font-weight: 400;
+  line-height: 1.3;
+  padding: 6px 8px;
+  border-radius: 4px;
+  white-space: normal;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.15s ease;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.metric-tooltip:hover::after,
+.metric-tooltip:focus-visible::after {
+  opacity: 1;
+  visibility: visible;
 }
