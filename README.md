@@ -4,13 +4,11 @@ A browser-based tool for recording short bass clarinet takes and computing
 acoustic metrics that help compare reed/mouthpiece combinations objectively —
 supplementing (not replacing) by-ear testing.
 
-This is a v1 prototype: the full record → analyze → chart → session-compare
-flow works end to end. See [CLAUDE.md](./CLAUDE.md) for the complete project
-spec, analysis methodology, and non-goals.
+Author's note:  I'm not sure how valuable any of this is yet.  So far, my take away is the solution is "more air support" - same as any teacher you've ever had has said. :)
 
 ## Status
 
-v1 is feature-complete:
+The following works:
 
 - Mic recording with a clear idle / recording / processing / done state
 - Per-take analysis, computed live during recording via the Web Audio API:
@@ -30,9 +28,6 @@ v1 is feature-complete:
 Nothing persists across a page reload by design — see "Session storage" in
 CLAUDE.md.
 
-Stretch goals not yet implemented: overlaying multiple trials' curves on one
-chart, a real LPC-based formant estimate, CSV/JSON export, and take-type tags.
-
 ## Tech stack
 
 - React + TypeScript (functional components, hooks only), built with Vite
@@ -46,23 +41,13 @@ chart, a real LPC-based formant estimate, CSV/JSON export, and take-type tags.
 ## Getting started
 
 ```sh
-npm install
-npm run dev
-```
-
-or with the included `Makefile`:
-
-```sh
 make install
 make dev
 ```
 
 Open the printed local URL in a browser and grant microphone access.
 
-In VS Code, hitting F5 runs the dev server and opens it in Chrome
-automatically (see `.vscode/launch.json`).
-
-## Available commands
+## Available Makefile targets
 
 | npm script         | Make target      | What it does                              |
 | ------------------- | ---------------- | ------------------------------------------ |
@@ -89,4 +74,4 @@ src/
 There's no automated test suite — this depends on a live mic and real
 playing, so validation is manual: record a few takes and sanity-check that
 metrics respond sensibly (e.g. a deliberately breathy take should show higher
-spectral flatness). See CLAUDE.md for more on this approach.
+spectral flatness). 
